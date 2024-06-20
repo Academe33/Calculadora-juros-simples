@@ -89,19 +89,18 @@
       </thead>
       <tbody>
         <tr>
-    <tr>
           <td>jan/24</td>
           <td><input type="number" value="30" oninput="updateTable()"></td>
           <td>0.00</td>
           <td>30</td>
         </tr>
-        
-  <td>fev/24</td>
+        <tr>
+          <td>fev/24</td>
           <td><input type="number" value="30" oninput="updateTable()"></td>
           <td>0.00</td>
           <td>30</td>
         </tr>
-    <tr>
+        <tr>
           <td>mar/24</td>
           <td><input type="number" value="30" oninput="updateTable()"></td>
           <td>0.00</td>
@@ -174,10 +173,10 @@
       for (let i = 1; i < rows.length; i++) {
         const cells = rows[i].cells;
         const value = parseFloat(cells[1].querySelector('input').value) || 0;
-        const interest = (i === 1 ? 0 : parseFloat((accumulated * interestRate).toFixed(2)));
-        accumulated += value + interest;
+        const interest = (accumulated * interestRate).toFixed(2);
+        accumulated += value + parseFloat(interest);
         
-        cells[2].innerText = interest.toFixed(2);
+        cells[2].innerText = interest;
         cells[3].innerText = accumulated.toFixed(2);
       }
     }
