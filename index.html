@@ -12,8 +12,9 @@
       padding: 0;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       height: 100vh;
+      padding-top: 50px; /* Adicionado padding-top para descer o contêiner */
     }
     .container {
       background: #fff;
@@ -22,18 +23,21 @@
       padding: 20px;
       max-width: 800px;
       width: 100%;
+      margin-top: 50px; /* Adiciona margem superior ao contêiner */
     }
     h1 {
       text-align: center;
       color: #333;
       background-color: #7DC9E7;
-      padding: 10px;
+      padding: 20px; /* Reduzido para garantir mais espaço */
       border-radius: 8px 8px 0 0;
-      margin-top: 0;
+      margin: 0;
+      font-size: 1.5em; /* Reduzido o tamanho da fonte */
     }
-    p {
+    .subtitle {
       text-align: center;
       color: #666;
+      margin-top: 20px; /* Aumentado para mais espaço entre título e subtítulo */
     }
     table {
       width: 100%;
@@ -76,8 +80,10 @@
 <body>
   <div class="container">
     <h1>MEUS INVESTIMENTOS COM RENDIMENTO</h1>
-    <p>Altere o valor na calculadora de juros</p>
-    <p>taxa de juros de 0.75% ao mês</p>
+    <div class="subtitle">
+      <p>Altere o valor na calculadora de juros</p>
+      <p>taxa de juros de 0.75% ao mês</p>
+    </div>
     <table id="investmentTable">
       <thead>
         <tr>
