@@ -1,91 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editable Spreadsheet</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investimentos com Rendimento</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #F4F3EB;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 800px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      background-color: #7DC9E7;
+      padding: 10px;
+      border-radius: 8px 8px 0 0;
+      margin-top: 0;
+    }
+    p {
+      text-align: center;
+      color: #666;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #FFBE86;
+      color: #fff;
+    }
+    td input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .totals {
+      font-weight: bold;
+      background-color: #F9F9F9;
+    }
+    .container {
+      border: 2px solid #F95A37;
+    }
+    td {
+      background-color: #F4F3EB;
+    }
+    input {
+      background-color: #fff;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h2>MEUS INVESTIMENTOS COM RENDIMENTO</h2>
-                <h3>Altere o valor na calculadora de juros</h3>
-                <h4>taxa de juros de 0.75% ao mês</h4>
+  <div class="container">
+    <h1>MEUS INVESTIMENTOS COM RENDIMENTO</h1>
+    <p>Altere o valor na calculadora de juros</p>
+    <p>taxa de juros de 0.75% ao mês</p>
+    <table id="investmentTable">
+      <thead>
+        <tr>
+          <th>MÊS</th>
+          <th>VALOR (R$)</th>
+          <th>JUROS (R$)</th>
+          <th>ACUMULADO (R$)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>mar/24</td>
+          <td><input type="number" value="30" oninput="updateTable()"></td>
+          <td>0.00</td>
+          <td>30</td>
+        </tr>
+        <tr>
+          <td>abr/24</td>
+          <td><input type="number" value="30" oninput="updateTable()"></td>
+          <td>0.22</td>
+          <td>60</td>
+        </tr>
+        <tr>
+          <td>mai/24</td>
+          <td><input type="number" value="30" oninput="updateTable()"></td>
+          <td>0.43</td>
+          <td>91</td>
+        </tr>
+        <tr>
+          <td>jun/24</td>
+          <td><input type="number" value="30" oninput="updateTable()"></td>
+          <td>0.43</td>
+          <td>122</td>
+        </tr>
+        <tr>
+          <td>jul/24</td>
+          <td><input type="number" value="30" oninput="updateTable()"></td>
+          <td>0.43</td>
+          <td>153</td>
+        </tr>
+        <tr>
+          <td>ago/24</td>
+          <td><input type="number" value="30" oninput="updateTable()"></td>
+          <td>0.43</td>
+          <td>184</td>
+        </tr>
+        <tr>
+          <td>set/24</td>
+          <td><input type="number" value="30" oninput="updateTable()"></td>
+          <td>0.43</td>
+          <td>215</td>
+        </tr>
+        <tr>
+          <td>out/24</td>
+          <td><input type="number" value="30" oninput="updateTable()"></td>
+          <td>0.43</td>
+          <td>246</td>
+        </tr>
+        <tr>
+          <td>nov/24</td>
+          <td><input type="number" value="30" oninput="updateTable()"></td>
+          <td>0.43</td>
+          <td>277</td>
+        </tr>
+        <tr>
+          <td>dez/24</td>
+          <td><input type="number" value="30" oninput="updateTable()"></td>
+          <td>0.43</td>
+          <td>308</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    function updateTable() {
+      const table = document.getElementById('investmentTable');
+      const rows = table.rows;
+      let accumulated = 0;
+      const interestRate = 0.0075;
 
-        <table id="investmentTable">
-            <thead>
-                <tr>
-                    <th>MÊS</th>
-                    <th>VALOR (R$)</th>
-                    <th>JUROS (R$)</th>
-                    <th>ACUMULADO (R$)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>mar/24</td>
-                    <td contenteditable="true">30</td>
-                    <td>0,00</td>
-                    <td>30</td>
-                </tr>
-                <tr>
-                    <td>abr/24</td>
-                    <td contenteditable="true">30</td>
-                    <td>0,22</td>
-                    <td>60</td>
-                </tr>
-                <tr>
-                    <td>mai/24</td>
-                    <td contenteditable="true">30</td>
-                    <td>0,43</td>
-                    <td>91</td>
-                </tr>
-                <tr>
-                    <td>Jun/24</td>
-                    <td contenteditable="true">30</td>
-                    <td>0,43</td>
-                    <td>91</td>
-                </tr>
-<tr>
-                    <td>jul/24</td>
-                    <td contenteditable="true">30</td>
-                    <td>0,43</td>
-                    <td>91</td>
-                </tr>
-                <tr>
-                    <td>ago/24</td>
-                    <td contenteditable="true">30</td>
-                    <td>0,43</td>
-                    <td>91</td>
-                </tr>
-<tr>
-                    <td>set/24</td>
-                    <td contenteditable="true">30</td>
-                    <td>0,43</td>
-                    <td>91</td>
-                </tr>
-                <tr>
-                    <td>out/24</td>
-                    <td contenteditable="true">30</td>
-                    <td>0,43</td>
-                    <td>91</td>
-                </tr>
-<tr>
-                    <td>nov/24</td>
-                    <td contenteditable="true">30</td>
-                    <td>0,43</td>
-                    <td>91</td>
-                </tr>
-<tr>
-                    <td>dez/24</td>
-                    <td contenteditable="true">30</td>
-                    <td>0,43</td>
-                    <td>91</td>
-                </tr>
-                <!-- Adicione mais linhas conforme necessário -->
-            </tbody>
-        </table>
-    </div>
-    <script src="script.js"></script>
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].cells;
+        const value = parseFloat(cells[1].querySelector('input').value) || 0;
+        const interest = (i === 1 ? 0 : parseFloat((accumulated * interestRate).toFixed(2)));
+        accumulated += value + interest;
+        
+        cells[2].innerText = interest.toFixed(2);
+        cells[3].innerText = accumulated.toFixed(2);
+      }
+    }
+
+    // Initialize table
+    updateTable();
+  </script>
 </body>
 </html>
